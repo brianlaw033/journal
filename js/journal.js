@@ -1,19 +1,3 @@
-// $(document).ready(function(){
-//   $(window).keyup(function(){
-//   var content = $('#content').val();
-//   var wordarray = content.split(' ');
-//   if ($('#content').val() === ''){
-//     $('#wordCount').replaceWith('<p id="wordCount">Word Count:0</p>');
-//   } else {
-//   $('#wordCount').replaceWith('<p id="wordCount">Word Count:'+(wordarray.length)+'</p>');
-// }
-//
-// });
-
-//
-// var content='text fefwef fff,fwef';
-// var wordarray= content.split(' ');
-// console.log(wordarray.length+1)
 function Counter(skinName) {
   this.skin = skinName;
 }
@@ -79,7 +63,14 @@ Counter.prototype.consonantCount = function(contentLowercase, characterArray) {
 
 Counter.prototype.firstSen = function(content, sentenceArray){
   var first_sen = '';
-  first_sen = sentenceArray[1];
+  var senWordarray = sentenceArray[0].split(' ');
+  if (senWordarray.length > 8){
+    for (i=0; i<=7;i++){
+      first_sen += senWordarray[i]+" ";
+  }
+}else{
+  first_sen = sentenceArray[0];
+  }
   return first_sen;
 };
 

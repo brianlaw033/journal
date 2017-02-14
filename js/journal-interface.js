@@ -10,7 +10,7 @@ $(document).ready(function(){
   var word_count = simpleCounter.wordCount(contentLowercase, wordArray);
   var vowel_count = simpleCounter.vowelCount(contentLowercase, characterArray);
   var consonant_count = simpleCounter.consonantCount(contentLowercase, characterArray);
-  var first_sen = simpleCounter.firstSen(content, sentenceArray);
+  var first_sen = simpleCounter.firstSen(content, sentenceArray, wordArray);
   $('#wordCount').text(word_count);
   $('#vowelCount').text(vowel_count);
   $('#consonantCount').text(consonant_count);

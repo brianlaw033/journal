@@ -1,20 +1,4 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-// $(document).ready(function(){
-//   $(window).keyup(function(){
-//   var content = $('#content').val();
-//   var wordarray = content.split(' ');
-//   if ($('#content').val() === ''){
-//     $('#wordCount').replaceWith('<p id="wordCount">Word Count:0</p>');
-//   } else {
-//   $('#wordCount').replaceWith('<p id="wordCount">Word Count:'+(wordarray.length)+'</p>');
-// }
-//
-// });
-
-//
-// var content='text fefwef fff,fwef';
-// var wordarray= content.split(' ');
-// console.log(wordarray.length+1)
 function Counter(skinName) {
   this.skin = skinName;
 }
@@ -80,7 +64,14 @@ Counter.prototype.consonantCount = function(contentLowercase, characterArray) {
 
 Counter.prototype.firstSen = function(content, sentenceArray){
   var first_sen = '';
-  first_sen = sentenceArray[1];
+  var senWordarray = sentenceArray[0].split(' ');
+  if (senWordarray.length > 8){
+    for (i=0; i<=7;i++){
+      first_sen += senWordarray[i]+" ";
+  }
+}else{
+  first_sen = sentenceArray[0];
+  }
   return first_sen;
 };
 
@@ -99,7 +90,7 @@ $(document).ready(function(){
   var word_count = simpleCounter.wordCount(contentLowercase, wordArray);
   var vowel_count = simpleCounter.vowelCount(contentLowercase, characterArray);
   var consonant_count = simpleCounter.consonantCount(contentLowercase, characterArray);
-  var first_sen = simpleCounter.firstSen(content, sentenceArray);
+  var first_sen = simpleCounter.firstSen(content, sentenceArray, wordArray);
   $('#wordCount').text(word_count);
   $('#vowelCount').text(vowel_count);
   $('#consonantCount').text(consonant_count);
